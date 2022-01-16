@@ -24,6 +24,7 @@ specifiers:
   '@opentelemetry/instrumentation-graphql': '0.22'
   '@opentelemetry/instrumentation-http': '0.22'
   '@opentelemetry/node': '0.22'
+  '@opentelemetry/resources': '0.22'
   '@types/jest': 27.0.2
   '@types/node': 14.14.33
   '@typescript-eslint/eslint-plugin': ~5.3.0
@@ -53,6 +54,7 @@ dependencies:
   '@opentelemetry/instrumentation-graphql': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/instrumentation-http': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/node': 0.22.0_@opentelemetry+api@1.0.4
+  '@opentelemetry/resources': 0.22.0_@opentelemetry+api@1.0.4
   apollo-server-express: 3.6.1_graphql@15.8.0
   graphql: 15.8.0
   reflect-metadata: 0.1.13
