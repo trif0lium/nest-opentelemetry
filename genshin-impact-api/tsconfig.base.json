@@ -19,6 +19,7 @@
       "@genshin-impact-api/character-api/data-gateway": [
         "libs/character-api/data-gateway/src/index.ts"
       ],
+      "@genshin-impact-api/model": ["libs/model/src/index.ts"],
       "@genshin-impact-api/tracing": ["libs/tracing/src/index.ts"]
     }
   },

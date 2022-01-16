@@ -6,6 +6,7 @@
     "caching": "libs/caching",
     "character-api": "apps/character-api",
     "character-api-data-gateway": "libs/character-api/data-gateway",
+    "model": "libs/model",
     "tracing": "libs/tracing"
   }
 }
