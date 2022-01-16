@@ -1,52 +1,42 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
-import { InstrumentationOption, registerInstrumentations } from '@opentelemetry/instrumentation'
+import { InstrumentationOption } from '@opentelemetry/instrumentation'
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express';
 import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
-import { NodeTracerProvider } from '@opentelemetry/node';
 import { Resource } from '@opentelemetry/resources'
 import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/tracing'
 import { trace, context, Tracer, Span } from '@opentelemetry/api'
 import { TracingOptions, TRACING_OPTIONS } from './tracing.constant';
 import { PinoInstrumentation } from '@opentelemetry/instrumentation-pino';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
 
 
 @Injectable()
 export class TracingService implements OnModuleInit {
   constructor(@Inject(TRACING_OPTIONS) private tracingOptions: TracingOptions) {}
 
-  onModuleInit() {
-    const provider = new NodeTracerProvider({
+  async onModuleInit() {
+    const instrumentations: InstrumentationOption[] = [
+      new ExpressInstrumentation(),
+      new HttpInstrumentation(),
+      new PinoInstrumentation()
+    ]
+
+    if (this.tracingOptions.serviceName !== 'api-gateway') {
+      instrumentations.push(new GraphQLInstrumentation())
+    }
+
+    const openTelemetrySDK = new NodeSDK({
+      spanProcessor: new SimpleSpanProcessor(new ConsoleSpanExporter()),
+      contextManager: new AsyncLocalStorageContextManager(),
+      instrumentations,
       resource: Resource.default().merge(new Resource({
         "service.name": this.tracingOptions.serviceName
       }))
     })
 
-    const instrumentations: InstrumentationOption[] = [
-      new HttpInstrumentation(),
-      new ExpressInstrumentation(),
-      new PinoInstrumentation({
-        logHook: (_, record) => {
-          record['resource.service.name'] = provider.resource.attributes['service.name']
-        }
-      })
-    ]
-
-    if (this.tracingOptions.serviceName != 'api-gateway') {
-      instrumentations.push(new GraphQLInstrumentation())
-    }
-
-    registerInstrumentations({
-      instrumentations
-    })
-
-    const consoleExporter = new ConsoleSpanExporter()
-    provider.addSpanProcessor(
-      new SimpleSpanProcessor(consoleExporter)
-    )
-
-    provider.register()
-    trace.setGlobalTracerProvider(provider)
+    await openTelemetrySDK.start()
   }
 
   get tracer(): Tracer {
