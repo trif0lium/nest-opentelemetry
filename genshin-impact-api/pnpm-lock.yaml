@@ -1,6 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@apollo/federation': ^0.33.9
+  '@apollo/subgraph': ^0.1.5
   '@nestjs/common': ^8.0.0
   '@nestjs/core': ^8.0.0
   '@nestjs/graphql': ^9.1.2
@@ -43,9 +45,11 @@ specifiers:
   typescript: ~4.4.3
 
 dependencies:
+  '@apollo/federation': 0.33.9_graphql@15.8.0
+  '@apollo/subgraph': 0.1.5_graphql@15.8.0
   '@nestjs/common': 8.2.5_88a789cb3f20cca25c3f70fe96f41643
   '@nestjs/core': 8.2.5_2d391bccf7bae46d184f78881868b795
-  '@nestjs/graphql': 9.1.2_67c4987cebe643628d7cdffea20cbe95
+  '@nestjs/graphql': 9.1.2_ace34b9c06ae2da209da725d0842b9ec
   '@nestjs/platform-express': 8.2.5_dd9ef2e1e23f087665d46fe53bbbed58
   '@opentelemetry/api': 1.0.4
   '@opentelemetry/core': 0.22.0_@opentelemetry+api@1.0.4
@@ -118,6 +122,19 @@ packages:
       - chokidar
     dev: true
 
+  /@apollo/federation/0.33.9_graphql@15.8.0:
+    resolution: {integrity: sha512-Sbau1gvWN6/pJdw13xZCoQ75IQu6F6D9XkZ9FapMVX04bE1j1XXbYtSK+ZVZuOOCfMLnYV/iLEEPxedVb7+0yA==}
+    engines: {node: '>=12.13.0 <17.0'}
+    peerDependencies:
+      graphql: ^15.5.3
+    dependencies:
+      '@apollo/subgraph': 0.1.5_graphql@15.8.0
+      apollo-graphql: 0.9.5_graphql@15.8.0
+      apollo-server-types: 3.5.0_graphql@15.8.0
+      graphql: 15.8.0
+      lodash.xorby: 4.7.0
+    dev: false
+
   /@apollo/protobufjs/1.2.2:
     resolution: {integrity: sha512-vF+zxhPiLtkwxONs6YanSt1EpwpGilThpneExUN5K3tCymuxNnVq2yojTvnpRjv2QfsEIt/n7ozPIIzBLwGIDQ==}
     hasBin: true
@@ -136,6 +153,16 @@ packages:
       '@types/long': 4.0.1
       '@types/node': 10.17.60
       long: 4.0.0
+    dev: false
+
+  /@apollo/subgraph/0.1.5_graphql@15.8.0:
+    resolution: {integrity: sha512-i1uU9llldGMV7GcBOUQRqnbGfgOpc6nrOVw93oKlugZq5R00q8y/RX8KgvMfdXZyr4MJ2/gO6Kw7LzbjCKU+Kw==}
+    engines: {node: '>=12.13.0 <17.0'}
+    peerDependencies:
+      graphql: ^15.5.3
+    dependencies:
+      apollo-graphql: 0.9.5_graphql@15.8.0
+      graphql: 15.8.0
     dev: false
 
   /@apollographql/apollo-tools/0.5.2:
@@ -902,7 +929,7 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /@nestjs/graphql/9.1.2_67c4987cebe643628d7cdffea20cbe95:
+  /@nestjs/graphql/9.1.2_ace34b9c06ae2da209da725d0842b9ec:
     resolution: {integrity: sha512-ncxmkKmrswnHJ+jLgc6tbkRET6HAyC3gK6WKt1CdPLjvMnXVpFVpyQMFSenNXxAndInw9IgaiSyiJFdRYZVD/w==}
     peerDependencies:
       '@apollo/federation': ^0.26.0 || ^0.27.0 || ^0.29.0 || ^0.33.0
@@ -932,6 +959,8 @@ packages:
       ts-morph:
         optional: true
     dependencies:
+      '@apollo/federation': 0.33.9_graphql@15.8.0
+      '@apollo/subgraph': 0.1.5_graphql@15.8.0
       '@graphql-tools/merge': 6.2.5_graphql@15.8.0
       '@graphql-tools/schema': 7.1.5_graphql@15.8.0
       '@graphql-tools/utils': 7.10.0_graphql@15.8.0
@@ -2241,6 +2270,18 @@ packages:
       apollo-server-env: 4.2.0
     dev: false
 
+  /apollo-graphql/0.9.5_graphql@15.8.0:
+    resolution: {integrity: sha512-RGt5k2JeBqrmnwRM0VOgWFiGKlGJMfmiif/4JvdaEqhMJ+xqe/9cfDYzXfn33ke2eWixsAbjEbRfy8XbaN9nTw==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      graphql: ^14.2.1 || ^15.0.0
+    dependencies:
+      core-js-pure: 3.20.3
+      graphql: 15.8.0
+      lodash.sortby: 4.7.0
+      sha.js: 2.4.11
+    dev: false
+
   /apollo-reporting-protobuf/3.3.0:
     resolution: {integrity: sha512-51Jwrg0NvHJfKz7TIGU8+Os3rUAqWtXeKRsRtKYtTeMSBPNhzz8UoGjAB3XyVmUXRE3IRmLtDPDRFL7qbxMI/w==}
     dependencies:
@@ -2831,6 +2872,11 @@ packages:
       serialize-javascript: 6.0.0
       webpack: 5.66.0
     dev: true
+
+  /core-js-pure/3.20.3:
+    resolution: {integrity: sha512-Q2H6tQ5MtPtcC7f3HxJ48i4Q7T9ybPKgvWyuH7JXIoNa2pm0KuBnycsET/qw1SLLZYfbsbrZQNMeIOClb+6WIA==}
+    requiresBuild: true
+    dev: false
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -4760,6 +4806,10 @@ packages:
 
   /lodash.sortby/4.7.0:
     resolution: {integrity: sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=}
+    dev: false
+
+  /lodash.xorby/4.7.0:
+    resolution: {integrity: sha1-nBmm+fBjputT3QPBtocXmYAUY9c=}
     dev: false
 
   /lodash/4.17.21:
