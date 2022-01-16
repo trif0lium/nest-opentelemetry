@@ -6,7 +6,7 @@ import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { NodeTracerProvider } from '@opentelemetry/node';
 import { Resource } from '@opentelemetry/resources'
 import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/tracing'
-import { trace, Tracer } from '@opentelemetry/api'
+import { trace, context, Tracer, Span } from '@opentelemetry/api'
 import { TracingOptions, TRACING_OPTIONS } from './tracing.constant';
 import { PinoInstrumentation } from '@opentelemetry/instrumentation-pino';
 
@@ -49,7 +49,16 @@ export class TracingService implements OnModuleInit {
     trace.setGlobalTracerProvider(provider)
   }
 
-  get tracer(): Tracer {
+  private get tracer(): Tracer {
     return trace.getTracer(this.tracingOptions.serviceName)
+  }
+
+  get currentSpan(): Span {
+    return trace.getSpan(context.active())
+  }
+
+  startSpan(name: string, parentSpan?: Span): Span {
+    const ctx = parentSpan ? trace.setSpan(context.active(), parentSpan) : (this.currentSpan ? trace.setSpan(context.active(), this.currentSpan) : undefined)
+    return this.tracer.startSpan(name, undefined, ctx)
   }
 }
