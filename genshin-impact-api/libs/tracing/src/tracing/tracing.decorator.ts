@@ -9,8 +9,8 @@ export function Span(name?: string) {
     propertyKey: string,
     propertyDescriptor: PropertyDescriptor,
   ) => {
-    injectTracingService(target, TracingService.name)
-    const tracingService: TracingService = this
+    injectTracingService(target, 'tracingService')
+    const tracingService: TracingService = this.tracingService
     const method = propertyDescriptor.value;
     // eslint-disable-next-line no-param-reassign
     propertyDescriptor.value = function PropertyDescriptor(...args: any[]) {
