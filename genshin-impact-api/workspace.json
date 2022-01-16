@@ -4,6 +4,7 @@
     "api-gateway": "apps/api-gateway",
     "artifact-api": "apps/artifact-api",
     "caching": "libs/caching",
-    "character-api": "apps/character-api"
+    "character-api": "apps/character-api",
+    "tracing": "libs/tracing"
   }
 }

@@ -1,0 +1,34 @@
+{
+  "root": "libs/tracing",
+  "sourceRoot": "libs/tracing/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/tracing",
+        "tsConfig": "libs/tracing/tsconfig.lib.json",
+        "packageJson": "libs/tracing/package.json",
+        "main": "libs/tracing/src/index.ts",
+        "assets": ["libs/tracing/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/tracing/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/tracing"],
+      "options": {
+        "jestConfig": "libs/tracing/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

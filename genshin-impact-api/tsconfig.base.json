@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@genshin-impact-api/caching": ["libs/caching/src/index.ts"]
+      "@genshin-impact-api/caching": ["libs/caching/src/index.ts"],
+      "@genshin-impact-api/tracing": ["libs/tracing/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
