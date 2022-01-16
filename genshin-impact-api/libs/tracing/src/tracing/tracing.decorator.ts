@@ -10,11 +10,11 @@ export function Span(name?: string) {
     propertyDescriptor: PropertyDescriptor,
   ) => {
     injectTracingService(target, 'tracingService')
-    const tracingService: TracingService = this.tracingService
     const method = propertyDescriptor.value;
     // eslint-disable-next-line no-param-reassign
     propertyDescriptor.value = function PropertyDescriptor(...args: any[]) {
       const currentSpan = trace.getSpan(context.active());
+      const tracingService: TracingService = this.tracingService
       const tracer = tracingService.tracer
 
       return context.with(trace.setSpan(context.active(), currentSpan), () => {
