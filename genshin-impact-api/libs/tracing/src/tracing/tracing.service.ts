@@ -6,7 +6,9 @@ import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { NodeTracerProvider } from '@opentelemetry/node';
 import { Resource } from '@opentelemetry/resources'
 import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/tracing'
+import { trace, Tracer } from '@opentelemetry/api'
 import { TracingOptions, TRACING_OPTIONS } from './tracing.constant';
+
 
 @Injectable()
 export class TracingService implements OnModuleInit {
@@ -33,5 +35,10 @@ export class TracingService implements OnModuleInit {
     )
 
     provider.register()
+    trace.setGlobalTracerProvider(provider)
+  }
+
+  get tracer(): Tracer {
+    return trace.getTracer(this.tracingOptions.serviceName)
   }
 }
