@@ -29,6 +29,7 @@ specifiers:
   '@opentelemetry/instrumentation-pino': '0.24'
   '@opentelemetry/resources': '0.24'
   '@opentelemetry/sdk-node': ^0.27.0
+  '@opentelemetry/sdk-trace-base': ^1.0.1
   '@opentelemetry/tracing': '0.24'
   '@types/jest': 27.0.2
   '@types/node': 14.14.33
@@ -64,6 +65,7 @@ dependencies:
   '@opentelemetry/instrumentation-pino': 0.24.0_@opentelemetry+api@1.0.4
   '@opentelemetry/resources': 0.24.0_@opentelemetry+api@1.0.4
   '@opentelemetry/sdk-node': 0.27.0_@opentelemetry+api@1.0.4
+  '@opentelemetry/sdk-trace-base': 1.0.1_@opentelemetry+api@1.0.4
   '@opentelemetry/tracing': 0.24.0_@opentelemetry+api@1.0.4
   apollo-server-express: 3.6.1_graphql@15.8.0
   graphql: 15.8.0

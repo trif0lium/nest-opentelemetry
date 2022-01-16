@@ -26,6 +26,7 @@
     "@opentelemetry/instrumentation-pino": "0.24",
     "@opentelemetry/resources": "0.24",
     "@opentelemetry/sdk-node": "^0.27.0",
+    "@opentelemetry/sdk-trace-base": "^1.0.1",
     "@opentelemetry/tracing": "0.24",
     "apollo-server-express": "^3.6.1",
     "graphql": "^15",
