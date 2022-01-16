@@ -8,6 +8,7 @@ import { Resource } from '@opentelemetry/resources'
 import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/tracing'
 import { trace, Tracer } from '@opentelemetry/api'
 import { TracingOptions, TRACING_OPTIONS } from './tracing.constant';
+import { PinoInstrumentation } from '@opentelemetry/instrumentation-pino';
 
 
 @Injectable()
@@ -15,18 +16,23 @@ export class TracingService implements OnModuleInit {
   constructor(@Inject(TRACING_OPTIONS) private tracingOptions: TracingOptions) {}
 
   onModuleInit() {
-    registerInstrumentations({
-      instrumentations: [
-        new HttpInstrumentation(),
-        new ExpressInstrumentation(),
-        new GraphQLInstrumentation()
-      ]
-    })
-
     const provider = new NodeTracerProvider({
       resource: Resource.default().merge(new Resource({
         "service.name": this.tracingOptions.serviceName
       }))
+    })
+
+    registerInstrumentations({
+      instrumentations: [
+        new HttpInstrumentation(),
+        new ExpressInstrumentation(),
+        new GraphQLInstrumentation(),
+        new PinoInstrumentation({
+          logHook: (_, record) => {
+            record['resource.service.name'] = provider.resource.attributes['service.name']
+          }
+        })
+      ]
     })
 
     const consoleExporter = new ConsoleSpanExporter()
