@@ -1,7 +1,8 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { Global, DynamicModule, Module } from '@nestjs/common';
 import { TracingOptions, TRACING_OPTIONS } from '../tracing/tracing.constant';
 import { TracingService } from '../tracing/tracing.service';
 
+@Global()
 @Module({
   controllers: [],
   providers: [],
