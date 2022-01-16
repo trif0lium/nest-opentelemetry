@@ -19,6 +19,7 @@ specifiers:
   '@opentelemetry/api': ^1.0.4
   '@opentelemetry/core': '0.22'
   '@opentelemetry/exporter-jaeger': ^1.0.1
+  '@opentelemetry/instrumentation': ^0.27.0
   '@opentelemetry/instrumentation-express': '0.22'
   '@opentelemetry/instrumentation-graphql': '0.22'
   '@opentelemetry/instrumentation-http': '0.22'
@@ -47,6 +48,7 @@ dependencies:
   '@opentelemetry/api': 1.0.4
   '@opentelemetry/core': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/exporter-jaeger': 1.0.1_@opentelemetry+api@1.0.4
+  '@opentelemetry/instrumentation': 0.27.0_@opentelemetry+api@1.0.4
   '@opentelemetry/instrumentation-express': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/instrumentation-graphql': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/instrumentation-http': 0.22.0_@opentelemetry+api@1.0.4
@@ -1384,6 +1386,11 @@ packages:
       '@opentelemetry/api': 1.0.4
     dev: false
 
+  /@opentelemetry/api-metrics/0.27.0:
+    resolution: {integrity: sha512-tB79288bwjkdhPNpw4UdOEy3bacVwtol6Que7cAu8KEJ9ULjRfSiwpYEwJY/oER3xZ7zNFz0uiJ7N1jSiotpVA==}
+    engines: {node: '>=8.0.0'}
+    dev: false
+
   /@opentelemetry/api/1.0.4:
     resolution: {integrity: sha512-BuJuXRSJNQ3QoKA6GWWDyuLpOUck+9hAXNMCnrloc1aWVoy6Xq6t9PUV08aBZ4Lutqq2LEHM486bpZqoViScog==}
     engines: {node: '>=8.0.0'}
@@ -1482,6 +1489,20 @@ packages:
     dependencies:
       '@opentelemetry/api': 1.0.4
       '@opentelemetry/api-metrics': 0.22.0_@opentelemetry+api@1.0.4
+      require-in-the-middle: 5.1.0
+      semver: 7.3.5
+      shimmer: 1.2.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@opentelemetry/instrumentation/0.27.0_@opentelemetry+api@1.0.4:
+    resolution: {integrity: sha512-dUwY/VoDptdK8AYigwS3IKblG+unV5xIdV4VQKy+nX5aT3f7vd5PMYs4arCQSYLbLRe0s7GxK6S9dtjai/TsHQ==}
+    peerDependencies:
+      '@opentelemetry/api': ^1.0.0
+    dependencies:
+      '@opentelemetry/api': 1.0.4
+      '@opentelemetry/api-metrics': 0.27.0
       require-in-the-middle: 5.1.0
       semver: 7.3.5
       shimmer: 1.2.1
