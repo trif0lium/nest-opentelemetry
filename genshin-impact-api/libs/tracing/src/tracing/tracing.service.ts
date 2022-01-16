@@ -1,5 +1,5 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
-import { registerInstrumentations } from '@opentelemetry/instrumentation'
+import { InstrumentationOption, registerInstrumentations } from '@opentelemetry/instrumentation'
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express';
 import { GraphQLInstrumentation } from '@opentelemetry/instrumentation-graphql';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
@@ -22,17 +22,22 @@ export class TracingService implements OnModuleInit {
       }))
     })
 
+    const instrumentations: InstrumentationOption[] = [
+      new HttpInstrumentation(),
+      new ExpressInstrumentation(),
+      new PinoInstrumentation({
+        logHook: (_, record) => {
+          record['resource.service.name'] = provider.resource.attributes['service.name']
+        }
+      })
+    ]
+
+    if (this.tracingOptions.serviceName != 'api-gateway') {
+      instrumentations.push(new GraphQLInstrumentation())
+    }
+
     registerInstrumentations({
-      instrumentations: [
-        new HttpInstrumentation(),
-        new ExpressInstrumentation(),
-        new GraphQLInstrumentation(),
-        new PinoInstrumentation({
-          logHook: (_, record) => {
-            record['resource.service.name'] = provider.resource.attributes['service.name']
-          }
-        })
-      ]
+      instrumentations
     })
 
     const consoleExporter = new ConsoleSpanExporter()
