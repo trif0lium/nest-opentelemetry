@@ -9,6 +9,7 @@ specifiers:
   '@nrwl/cli': 13.4.5
   '@nrwl/eslint-plugin-nx': 13.4.5
   '@nrwl/jest': 13.4.5
+  '@nrwl/js': 13.4.5
   '@nrwl/linter': 13.4.5
   '@nrwl/nest': 13.4.5
   '@nrwl/node': 13.4.5
@@ -42,6 +43,7 @@ devDependencies:
   '@nrwl/cli': 13.4.5
   '@nrwl/eslint-plugin-nx': 13.4.5_ad99727f335bb3ee952e09577811df1c
   '@nrwl/jest': 13.4.5
+  '@nrwl/js': 13.4.5_prettier@2.5.1+typescript@4.4.4
   '@nrwl/linter': 13.4.5_typescript@4.4.4
   '@nrwl/nest': 13.4.5_prettier@2.5.1+typescript@4.4.4
   '@nrwl/node': 13.4.5_prettier@2.5.1+typescript@4.4.4
@@ -918,6 +920,30 @@ packages:
       - node-notifier
       - supports-color
       - ts-node
+      - utf-8-validate
+    dev: true
+
+  /@nrwl/js/13.4.5_prettier@2.5.1+typescript@4.4.4:
+    resolution: {integrity: sha512-+yzyO7g6kpndlhqh56MqwRA80+HeW+BczR7Xl8zh++wFbnKo0oJxN7G/S+CQobA5k3jRvXA5dcWsMbRf3SFHZg==}
+    dependencies:
+      '@nrwl/devkit': 13.4.5
+      '@nrwl/jest': 13.4.5
+      '@nrwl/linter': 13.4.5_typescript@4.4.4
+      '@nrwl/workspace': 13.4.5_prettier@2.5.1+typescript@4.4.4
+      chalk: 4.1.0
+      js-tokens: 4.0.0
+      rxjs: 6.6.7
+      rxjs-for-await: 0.0.2_rxjs@6.6.7
+      source-map-support: 0.5.19
+      tree-kill: 1.2.2
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - node-notifier
+      - prettier
+      - supports-color
+      - ts-node
+      - typescript
       - utf-8-validate
     dev: true
 
