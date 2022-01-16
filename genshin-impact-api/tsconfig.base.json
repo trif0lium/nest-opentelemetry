@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@genshin-impact-api/caching": ["libs/caching/src/index.ts"],
+      "@genshin-impact-api/character-api/character": [
+        "libs/character-api/character/src/index.ts"
+      ],
       "@genshin-impact-api/character-api/data-gateway": [
         "libs/character-api/data-gateway/src/index.ts"
       ],
