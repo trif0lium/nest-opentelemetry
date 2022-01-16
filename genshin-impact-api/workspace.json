@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "api-gateway": "apps/api-gateway",
+    "artifact-api": "apps/artifact-api",
     "character-api": "apps/character-api"
   }
 }
