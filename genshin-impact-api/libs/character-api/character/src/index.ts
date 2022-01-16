@@ -1,2 +1,2 @@
-export * from './lib/character-api-character.service';
-export * from './lib/character-api-character.module';
+export * from './lib/character.service';
+export * from './lib/character.module';
