@@ -1,16 +1,21 @@
+import { Inject } from '@nestjs/common';
 import { context, trace } from '@opentelemetry/api';
+import { TracingService } from './tracing.service';
 
 export function Span(name?: string) {
+  const injectTracingService = Inject(TracingService)
   return (
     target: any,
     propertyKey: string,
     propertyDescriptor: PropertyDescriptor,
   ) => {
+    injectTracingService(target, TracingService.name)
+    const tracingService: TracingService = this
     const method = propertyDescriptor.value;
     // eslint-disable-next-line no-param-reassign
     propertyDescriptor.value = function PropertyDescriptor(...args: any[]) {
       const currentSpan = trace.getSpan(context.active());
-      const tracer = trace.getTracer('default');
+      const tracer = tracingService.tracer
 
       return context.with(trace.setSpan(context.active(), currentSpan), () => {
         const span = tracer.startSpan(

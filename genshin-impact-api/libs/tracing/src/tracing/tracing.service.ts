@@ -49,7 +49,7 @@ export class TracingService implements OnModuleInit {
     trace.setGlobalTracerProvider(provider)
   }
 
-  private get tracer(): Tracer {
+  get tracer(): Tracer {
     return trace.getTracer(this.tracingOptions.serviceName)
   }
 
