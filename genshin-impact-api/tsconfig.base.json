@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@genshin-impact-api/caching": ["libs/caching/src/index.ts"],
+      "@genshin-impact-api/character-api/data-gateway": [
+        "libs/character-api/data-gateway/src/index.ts"
+      ],
+      "@genshin-impact-api/tracing": ["libs/tracing/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

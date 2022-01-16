@@ -1,0 +1,34 @@
+{
+  "root": "libs/caching",
+  "sourceRoot": "libs/caching/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/caching",
+        "tsConfig": "libs/caching/tsconfig.lib.json",
+        "packageJson": "libs/caching/package.json",
+        "main": "libs/caching/src/index.ts",
+        "assets": ["libs/caching/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/caching/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/caching"],
+      "options": {
+        "jestConfig": "libs/caching/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

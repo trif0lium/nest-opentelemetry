@@ -1,0 +1,23 @@
+{
+  "root": "libs/character-api/data-gateway",
+  "sourceRoot": "libs/character-api/data-gateway/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/character-api/data-gateway/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/character-api/data-gateway"],
+      "options": {
+        "jestConfig": "libs/character-api/data-gateway/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
