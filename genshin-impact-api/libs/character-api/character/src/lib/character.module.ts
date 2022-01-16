@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { CharacterApiCharacterService } from './character-api-character.service';
+import { CharacterService } from './character-api-character.service';
 
 @Module({
   controllers: [],
-  providers: [CharacterApiCharacterService],
-  exports: [CharacterApiCharacterService],
+  providers: [CharacterService],
+  exports: [CharacterService],
 })
-export class CharacterApiCharacterModule {}
+export class CharacterModule {}
