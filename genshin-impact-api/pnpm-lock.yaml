@@ -19,6 +19,7 @@ specifiers:
   '@nrwl/tao': 13.4.5
   '@nrwl/workspace': 13.4.5
   '@opentelemetry/api': ^1.0.4
+  '@opentelemetry/context-async-hooks': ^1.0.1
   '@opentelemetry/core': '0.22'
   '@opentelemetry/exporter-jaeger': ^1.0.1
   '@opentelemetry/instrumentation': '0.22'
@@ -53,6 +54,7 @@ dependencies:
   '@nestjs/graphql': 9.1.2_ace34b9c06ae2da209da725d0842b9ec
   '@nestjs/platform-express': 8.2.5_dd9ef2e1e23f087665d46fe53bbbed58
   '@opentelemetry/api': 1.0.4
+  '@opentelemetry/context-async-hooks': 1.0.1_@opentelemetry+api@1.0.4
   '@opentelemetry/core': 0.22.0_@opentelemetry+api@1.0.4
   '@opentelemetry/exporter-jaeger': 1.0.1_@opentelemetry+api@1.0.4
   '@opentelemetry/instrumentation': 0.22.0_@opentelemetry+api@1.0.4
@@ -1431,6 +1433,15 @@ packages:
     engines: {node: '>=8.1.0'}
     peerDependencies:
       '@opentelemetry/api': ^1.0.0
+    dependencies:
+      '@opentelemetry/api': 1.0.4
+    dev: false
+
+  /@opentelemetry/context-async-hooks/1.0.1_@opentelemetry+api@1.0.4:
+    resolution: {integrity: sha512-oGCPjDlZ03gXPAdLxw5iqaQJIpL8BZFaiZhAPgF7Vj6XYmrmrA/FXVIsjfNECQTa2D+lt5p8vf0xYIkFufgceQ==}
+    engines: {node: '>=8.1.0'}
+    peerDependencies:
+      '@opentelemetry/api': '>=1.0.0 <1.1.0'
     dependencies:
       '@opentelemetry/api': 1.0.4
     dev: false
